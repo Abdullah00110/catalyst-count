@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container">
+    <h2>Register</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Username Field -->
+        <label for="id_username">Username</label>
+        <input type="text" name="username" id="id_username" 
+               class="{{ form.username.errors|yesno:'invalid,' }}" 
+               value="{{ form.username.value|default_if_none:'' }}">
+        {% for error in form.username.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+        
+        <!-- Email Field -->
+        <label for="id_email">Email</label>
+        <input type="email" name="email" id="id_email" 
+               class="{{ form.email.errors|yesno:'invalid,' }}" 
+               value="{{ form.email.value|default_if_none:'' }}">
+        {% for error in form.email.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+        
+        <!-- Password Field -->
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password" 
+               class="{{ form.password.errors|yesno:'invalid,' }}">
+        {% for error in form.password.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+        
+        <!-- Confirm Password Field -->
+        <label for="id_confirm_password">Confirm Password</label>
+        <input type="password" name="confirm_password" id="id_confirm_password" 
+               class="{{ form.confirm_password.errors|yesno:'invalid,' }}">
+        {% for error in form.confirm_password.errors %}
+            <span class="error">{{ error }}</span>
+        {% endfor %}
+        
+        <!-- Submit Button -->
+        <button type="submit">Sign Up</button>
+    </form>
+</div>
+{% endblock content %}

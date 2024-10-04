@@ -13,6 +13,14 @@ class Company(models.Model):
     current_employee_estimate = models.IntegerField(null=True, blank=True)
     total_employee_estimate = models.IntegerField(null=True, blank=True)
 
+class Register(models.Model):
+    username = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.username
+
     def __str__(self):
         return self.name
     
