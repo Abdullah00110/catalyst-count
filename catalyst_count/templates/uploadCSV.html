@@ -16,17 +16,18 @@
             {% endfor %}
         </div>
     {% endif %}
-
+    <div class="upload-data">
     <form id="uploadForm" method="POST" enctype="multipart/form-data">
         {% comment %} <label for="csvFile">Select a CSV file:</label> {% endcomment %}
         {% csrf_token %}
         <input type="text" placeholder="Select File"> 
-        <input type="file" id="csvFile" name="file" accept=".csv" > 
-
+        {% comment %} <input type="file" id="csvFile" name="file" accept=".csv" >  {% endcomment %}
+        <button id="Browse"class=" btn btn-primary" type="submit">Browse</button>
         <br>
 
-        <button class="btn btn-primary mt-2" type="submit">Start Upload</button>
+        <button id="start-upload" class="btn btn-primary mt-2" type="submit">Start Upload</button>
     </form>
+    </div>
 
     <div class="progress mt-3">
         <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>

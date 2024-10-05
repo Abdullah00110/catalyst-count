@@ -101,3 +101,38 @@ button[type="submit"]:hover {
         font-size: 14px; /* Smaller font size for button */
     }
 }
+.upload-data input[type="text"] {
+    width: 25%;
+}
+
+#Browse{
+    width: 10%;
+    padding: 9px;
+    margin: -4px;
+}
+
+#start-upload{
+    width: 20%;
+    padding: 5px;
+}
+
+.query-form input[type="text"] {
+    width: 25%;
+}
+
+#queryBtn{
+    width: 27%;
+    padding: 20px;
+    margin: 22px;
+  
+}
+
+#resetBtn{
+    
+    width: 12%;
+    padding: 20px;
+    margin-top: 0px;
+    color: white;
+    background-color: gray;
+
+}
