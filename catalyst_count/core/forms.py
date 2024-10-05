@@ -1,11 +1,11 @@
 from django import forms
-from 
+from .models import Register
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
-        model = CustomUser
+        model = Register
         fields = ['username', 'email', 'password']
 
     # Custom validation to ensure passwords match

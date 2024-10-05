@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -7,20 +6,98 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    /* background-color: #397ed3; */
+    background-color: #f8f9fa; /* Light background color */
 }
 
 .main-container {
     width: 100%;
     max-width: 1200px;
-    margin: 50px auto 0;
+    margin: 50px auto;
     padding: 20px;
 }
 
-
-
 .filter {
-    /* padding: 10px; */
     margin: 20px;
 }
 
+/* Styling for the query builder form */
+
+/* Container Styling */
+.container {
+    width: 100%;
+    max-width: 800px; /* Increased width for a larger form */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* White background for form */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Form Heading */
+.container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Labels */
+label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Form Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside inputs */
+    margin-bottom: 15px; /* Space below inputs */
+    border: 1px solid #ced4da; /* Light border color */
+    border-radius: 5px; /* Rounded corners for inputs */
+    box-sizing: border-box; /* Box model calculation */
+    font-size: 14px; /* Font size for inputs */
+}
+
+/* Error Styling */
+.invalid {
+    border-color: red; /* Red border for invalid inputs */
+}
+
+.error {
+    color: red; /* Error message color */
+    font-size: 12px; /* Font size for error messages */
+    margin-bottom: 10px; /* Space below error messages */
+    display: block; /* Display error message as block */
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    width: 100%; /* Full width for button */
+    background-color: #007bff; /* Button color */
+    color: white; /* Button text color */
+    padding: 10px; /* Padding for button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for button */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size for button */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Responsive width for smaller screens */
+    }
+
+    button[type="submit"] {
+        font-size: 14px; /* Smaller font size for button */
+    }
+}

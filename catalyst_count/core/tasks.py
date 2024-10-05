@@ -42,7 +42,7 @@ def process_csv_data_to_db(chunk_df):
 @shared_task
 def save_csv_file(file_path):
     absolute_file_path = os.path.join(settings.MEDIA_ROOT, file_path)
-    print(f"Processing CSV file to: {absolute_file_path}")
+    # print(f"Processing CSV file to: {absolute_file_path}")
 
     try:
         chunk_size = 100000  

@@ -1,8 +1,9 @@
+from django.contrib.auth import authenticate, login as auth_login, logout
 import pandas as pd
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.files.storage import default_storage
-from .models import Company
+from .models import Company, Register
 
 
 # Expected headers
@@ -16,15 +17,47 @@ def validate_csv_headers(headers):
 def index(request): 
     return render(request, "index.html")
 
+def register(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        
+        if password != confirm_password:
+            messages.error(request, "Password do not match")
+            return render(request, 'register.html')
+        if Register.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists.")
+            return render(request, "register.html")
+        if Register.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists.")
+            return render(request, "register.html")
+        new_user = Register(username=username, email=email, password=password)
+        new_user.save()
+        messages.success(request, "Registration successful! You can now log in.")
+        return redirect('login') 
+    return render(request, "register.html")
 
 def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username, password)
+        user = authenticate(username=username, password=password)
+        print(user)
+        if user is not None:
+            auth_login(request, user)
+            messages.success(request, 'Login Successful')
+            print("Login success....")
+            return redirect('index')
     return render(request, "login.html")
 
 
-def register(request):
-    return render(request, "register.html")
 
 def logout(request):
+    logout(request)  # Log out the user
+    messages.success(request, "You have been logged out.")
     return render(request, "logout.html")
 
 
@@ -32,11 +65,11 @@ def upload_csv(request):
     if request.method == 'POST':
         csv_file = request.FILES['file']
         file_path = default_storage.save(csv_file.name, csv_file)
-        print(f"file_path: {file_path}")
+        # print(f"file_path: {file_path}")
 
         # Read the uploaded CSV file
         try:
-            df = pd.read_csv(default_storage.open(file_path), nrows=1)
+            df = pd.read_csv(file_path, nrows=1)
             if validate_csv_headers(list(df.columns)):
                 print("\n CSV headers are valid! \n")
 
