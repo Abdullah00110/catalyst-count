@@ -27,7 +27,6 @@ Catalyst-Count is a robust web application designed to streamline data managemen
 - Bootstrap
 - AJAX
 - Django-allauth
-- Chunked-upload
 
 ## Project Structure
 
